@@ -1,0 +1,5 @@
+service rcornerservice /system/bin/rcornerservice
+  class core
+  user system
+  group system
+  writepid /dev/cpuset/system/tasks
