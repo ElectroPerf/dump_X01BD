@@ -1,0 +1,14 @@
+# sdm660_64-user 10 QKQ1 41 release-keys
+- manufacturer: asus
+- platform: sdm660
+- codename: ASUS_X01BD
+- flavor: sdm660_64-user
+- release: 10
+- id: QKQ1
+- incremental: 17.2018.2004.424-20200506
+- tags: release-keys
+- fingerprint: 
+- is_ab: false
+- brand: asus
+- branch: sdm660_64-user-10-QKQ1-41-release-keys
+- repo: asus_asus_x01bd_dump
