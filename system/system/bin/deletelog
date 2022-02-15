@@ -1,0 +1,38 @@
+#! /system/bin/sh
+#Huaqin add for delete then start log service by zhangjignzhi at 20181108 start
+aplog_prop=`getprop persist.sys.debug.getaplog`
+qxdmlog_prop=`getprop persist.sys.debug.getqxdmlog`
+tcpdumplog_prop=`getprop persist.sys.debug.gettcpdump`
+if [ "$qxdmlog_prop" == "1" ]; then
+    setprop persist.sys.debug.getqxdmlog 0
+    cp -r sdcard/diag_logs/Diag.cfg sdcard/
+    cp -r sdcard/diag_logs/Diag.cfg2 sdcard/
+    usleep 300
+fi
+if [ -d "/sdcard/logs" ]; then
+    rm -rf /sdcard/logs
+fi
+if [ -d "/sdcard/diag_logs" ]; then
+    rm -rf /sdcard/diag_logs
+fi
+
+    usleep 500
+if [ "$aplog_prop" == "1" ]; then
+    usleep 300
+    setprop persist.sys.debug.getaplog 1
+fi
+if [ "$qxdmlog_prop" == "1" ]; then
+    mkdir -p sdcard/diag_logs/
+    cp -r sdcard/Diag.cfg sdcard/diag_logs/
+    cp -r sdcard/Diag.cfg2 sdcard/diag_logs/
+    usleep 500
+    setprop persist.sys.debug.getqxdmlog 1
+    rm -f sdcard/Diag.cfg
+    rm -f sdcard/Diag.cfg2
+fi
+if [ "$tcpdumplog_prop" == "1" ]; then
+    setprop persist.sys.debug.gettcpdump 0
+    usleep 300
+    setprop persist.sys.debug.gettcpdump 1
+fi
+#Huaqin add for delete then start log service by zhangjignzhi at 20181108 end
